@@ -12,7 +12,7 @@ export default function Details() {
               Detalhes da Festa
             </h1>
             <div className="flex flex-col items-center justify-center">
-              <span className="text-3xl text-center underline py-4 sm:text-2xl md:text-2xl ">
+              <span className="text-3xl text-center italic py-4 sm:text-2xl md:text-2xl ">
                 Na festa vai ter um Karaokê, então venha preparada pra soltar o
                 gogó
               </span>
@@ -82,8 +82,8 @@ export default function Details() {
                   <Image
                     src={"/Anive/sillycat.png"}
                     alt="Mapa"
-                    width={150}
-                    height={150}
+                    width={100}
+                    height={100}
                     objectFit="contain"
                   />
                 </div>
