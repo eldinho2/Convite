@@ -48,7 +48,7 @@ export default function CarouselAlbum() {
           />
         </div>
       </div>
-      <div className="absolute top-2 -right-20 rotate-12">
+      <div className="absolute -top-12 right-3 rotate-12">
         <Image
           src="/Anive/cherrie.webp"
           alt="Cherries"

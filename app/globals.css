@@ -2,6 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #FFB6C1;
+  border-radius: 6px;
+  border: 3px solid #FFFFFF;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #FFFFFF;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #FFA0B4;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #FFB6C1 #FFFFFF;
+}
+
 @keyframes bounceAndRotate {
     0%, 100% {
       transform: translateY(0) rotate(90deg);
