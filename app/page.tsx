@@ -55,7 +55,7 @@ export default function Home() {
         <section className="flex flex-col sm:flex-row items-center justify-between py-16 font-[family-name:var(--font-forum)] sm:py-4 md:py-4">
           <div className="flex flex-col items-center text-center text-2xl gap-4 max-w-[700px] sm:max-w-[60%]">
             <h1 className="text-7xl font-[family-name:var(--font-great-vibes)]">
-              Caderno de mensagens{" "}
+              Caderno de mensagens
             </h1>
             <h3>
               O caderno de mensagens tem como objetivo ser um espaço especial
@@ -68,7 +68,7 @@ export default function Home() {
               única de guardar o carinho de cada uma de vocês!
             </h3>
           </div>
-          <Link className="flex flex-col items-center cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out" href="/messages">
+          <Link className="flex flex-col items-center cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out" href="/mensagens">
             <div className="flex flex-col items-center" >
               <Image
                 src="/Anive/setafofarosa.png"

@@ -1,12 +1,22 @@
 import Image from "next/image";
 import Header from "../components/Header";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import Link from "next/link"
+
 
 export default function Details() {
   return (
     <div>
       <Header />
       <main className="pt-16">
-        <section className="flex flex-col sm:flex-row items-center justify-between py-16 font-[family-name:var(--font-forum)] sm:py-4 md:py-4">
+        <section className="flex flex-col sm:flex-row items-center justify-between py-16 font-[family-name:var(--font-forum)] sm:py-4 md:py-4 px-4">
           <div>
             <h1 className="flex text-center justify-center text-7xl font-[family-name:var(--font-great-vibes)]">
               Detalhes da Festa
@@ -16,12 +26,13 @@ export default function Details() {
                 Na festa vai ter um Karaokê, então venha preparada pra soltar o
                 gogó
               </span>
-              <div className="flex items-center justify-center gap-4 sm:flex-col md:flex-col">
+              <div className="flex items-center justify-center gap-4 sm:gap-2 md:gap-2 sm:flex-col md:flex-col">
                 <Image
                   src={"/Anive/gatocantor.png"}
                   alt="gatocantor"
                   width={300}
                   height={300}
+                  className="sm:w-[200px] sm:h-[200px] md:w-[250px] md:h-[250px]"
                 />
                 <video
                   className="w-64 h-64"
@@ -35,6 +46,7 @@ export default function Details() {
                   alt="gatolindo"
                   width={300}
                   height={300}
+                  className="sm:w-[200px] sm:h-[200px] md:w-[250px] md:h-[250px]"
                 />
               </div>
             </div>
@@ -66,16 +78,16 @@ export default function Details() {
                     alt="Mapa"
                     width={150}
                     height={150}
-                    objectFit="contain"
+                    className="sm:w-[100px] sm:h-[100px] md:w-[120px] md:h-[120px]"
                   />
                 </div>
-                <div className="absolute -top-20 right-3 flex flex-col items-center justify-center sm:hidden md:hidden">
+                <div className="absolute -top-20 right-3 flex flex-col items-center justify-center sm:static md:static">
                   <Image
                     src={"/Anive/Gatoaniversariante2.png"}
                     alt="Mapa"
                     width={150}
                     height={150}
-                    objectFit="contain"
+                    className="sm:w-[100px] sm:h-[100px] md:w-[120px] md:h-[120px]"
                   />
                 </div>
                 <div className="absolute top-24 right-4 flex flex-col items-center justify-center sm:hidden md:hidden">
@@ -171,7 +183,7 @@ export default function Details() {
                   fill
                 />
               </div>
-              <span className="flex items-center justify-center gap-2 absolute left-48 -bottom-16 sm:left-[25px] sm:bottom-48 md:left-[25px] md:bottom-4">
+              <span className="flex items-center justify-center gap-2 absolute left-48 -bottom-16 sm:static md:static sm:mt-4 md:mt-4">
                 <div className="w-28 h-28 relative">
                   <Image
                     src={"/Anive/Whastapp rosa.png"}
@@ -184,7 +196,7 @@ export default function Details() {
                   Confirmar presença
                 </p>
               </span>
-              <span className="flex items-center justify-center gap-2 absolute -left-10 -bottom-10 sm:left-[48px] sm:bottom-48 md:left-[45px] md:bottom-4">
+              <span className="flex items-center justify-center gap-2 absolute -left-10 -bottom-10 sm:static md:static sm:mt-4 md:mt-4">
                 <div className="w-16 h-16 relative">
                   <Image
                     src={"/Anive/presente.webp"}
@@ -193,9 +205,37 @@ export default function Details() {
                     objectFit="contain"
                   />
                 </div>
-                <p className="text-xm underline hover:bg-pink-200">
-                  Sugestões de presentes
-                </p>
+                <Dialog>
+                  <DialogTrigger className="text-xm underline hover:bg-pink-200">Sugestões de presentes</DialogTrigger>
+                  <DialogContent className="bg-pink-50 border-2 border-pink-300 rounded-2xl">
+                    <DialogHeader>
+                      <DialogTitle className="text-3xl text-pink-700 font-[family-name:var(--font-forum)] text-center">
+                        Sugestões de presentes
+                      </DialogTitle>
+                      <DialogDescription className="text-pink-500 text-center font-[family-name:var(--font-forum)] text-lg">
+                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      </DialogDescription>
+                    </DialogHeader>
+                    <div className="flex flex-col items-center justify-center gap-4 mt-4">
+                      <Link 
+                        href="https://www.amazon.com.br/s?k=presente+para+anivers%C3%A1rio+de+1+ano&ref=nb_sb_noss_2" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="bg-pink-400 hover:bg-pink-500 text-white px-6 py-2 rounded-full transition-colors duration-200 font-[family-name:var(--font-forum)]"
+                      >
+                        Lista Amazon
+                      </Link>
+                      <Link 
+                        href="https://www.amazon.com.br/s?k=presente+para+anivers%C3%A1rio+de+1+ano&ref=nb_sb_noss_2" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="bg-pink-400 hover:bg-pink-500 text-white px-6 py-2 rounded-full transition-colors duration-200 font-[family-name:var(--font-forum)]"
+                      >
+                        Lista 2
+                      </Link>
+                    </div>
+                  </DialogContent>
+                </Dialog>
               </span>
             </div>
           </div>
