@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 
-const API_URL = 'http://localhost:3001/mensagens'
+const API_URL = 'https://convitejuju.vercel.app/mensagens'
 
 export async function GET() {
   try {
