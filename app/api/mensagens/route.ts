@@ -15,7 +15,7 @@ export async function GET() {
     const fileContents = await fs.readFile(arquivoJson, 'utf8')
     const data = JSON.parse(fileContents)
     return NextResponse.json(data)
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json(
       { erro: 'Erro ao processar a requisição' },
       { status: 500 }

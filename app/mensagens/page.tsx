@@ -3,6 +3,13 @@ import Header from '../components/Header'
 import useSWR from 'swr'
 import { useState } from 'react'
 
+interface Mensagem {
+  id: number
+  autor: string
+  texto: string
+  data: string
+}
+
 const fetcher = (url: string) => fetch(url).then(res => res.json())
 
 export default function Mensagens() {
@@ -60,7 +67,7 @@ export default function Mensagens() {
         </form>
 
         <div className="space-y-4">
-          {data.mensagens.map((msg: any) => (
+          {data.mensagens.map((msg: Mensagem) => (
             <div key={msg.id} className="border p-4 rounded">
               <p className="font-bold">{msg.autor}</p>
               <p>{msg.texto}</p>
