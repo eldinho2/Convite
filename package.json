@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "jsonServer": "json-server --watch db.json --port 3001"
+    "jsonServer": "json-server --watch db.json"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.2",
