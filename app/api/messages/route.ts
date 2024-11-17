@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 
-const API_URL = "https://convitejuju.vercel.app/api/messages"
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/messages'
 
 console.log('API_URL:', API_URL)
 

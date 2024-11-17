@@ -10,7 +10,7 @@ interface Mensagem {
   data: string
 }
 
-console.log('API_URL:', process.env.API_URL)
+console.log('API_URL:', process.env.NEXT_PUBLIC_API_URL)
 
 const fetcher = (url: string) => fetch(url).then(res => res.json())
 
