@@ -16,14 +16,14 @@ export default function Mensagens() {
   const [autor, setAutor] = useState('')
   const [texto, setTexto] = useState('')
   
-  const { data, error, mutate } = useSWR('/api/mensagens', fetcher, {
+  const { data, error, mutate } = useSWR('/api/messages', fetcher, {
     refreshInterval: 1000
   })
 
   const enviarMensagem = async (e: React.FormEvent) => {
     e.preventDefault()
     
-    await fetch('/api/mensagens', {
+    await fetch('/api/messages', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -35,14 +35,14 @@ export default function Mensagens() {
     mutate()
   }
 
-  if (error) return <div>Erro ao carregar mensagens</div>
+  if (error) return <div>Erro ao carregar messages</div>
   if (!data) return <div>Carregando...</div>
 
   return (
     <div>
       <Header />
       <main className="pt-16 max-w-2xl mx-auto p-4">
-        <h1 className="text-2xl font-bold mb-6">Caderno de Mensagens</h1>
+        <h1 className="text-2xl font-bold mb-6">Caderno de messages</h1>
         
         <form onSubmit={enviarMensagem} className="mb-8">
           <input
@@ -67,7 +67,7 @@ export default function Mensagens() {
         </form>
 
         <div className="space-y-4">
-          {data.mensagens.map((msg: Mensagem) => (
+          {data.messages.map((msg: Mensagem) => (
             <div key={msg.id} className="border p-4 rounded">
               <p className="font-bold">{msg.autor}</p>
               <p>{msg.texto}</p>

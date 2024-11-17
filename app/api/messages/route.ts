@@ -1,12 +1,12 @@
 import { NextResponse } from 'next/server'
 
-const API_URL = 'https://convitejuju.vercel.app/mensagens'
+const API_URL = process.env.API_URL || 'http://localhost:3001/messages'
 
 export async function GET() {
   try {
     const response = await fetch(API_URL)
     const data = await response.json()
-    return NextResponse.json({ mensagens: data })
+    return NextResponse.json({ messages: data })
   } catch {
     return NextResponse.json(
       { erro: 'Erro ao processar a requisição' },
