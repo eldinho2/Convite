@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 
-const API_URL = "https://convitejuju.vercel.app/messages"
+const API_URL = "https://convitejuju.vercel.app/api/messages"
 
 console.log('API_URL:', API_URL)
 
