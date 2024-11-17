@@ -10,6 +10,8 @@ interface Mensagem {
   data: string
 }
 
+console.log('API_URL:', process.env.API_URL)
+
 const fetcher = (url: string) => fetch(url).then(res => res.json())
 
 export default function Mensagens() {
