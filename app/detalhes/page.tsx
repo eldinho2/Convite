@@ -191,15 +191,8 @@ export default function Details() {
               ></video>
             </div>
             <div className="relative flex flex-col items-center justify-center gap-4">
-              <div className="relative w-[300px] h-[300px]">
-                <Image
-                  src="/Anive/Gatoaniversariante.png"
-                  alt="gatocantor"
-                  fill
-                />
-              </div>
-              <span className="flex items-center justify-center gap-2 absolute left-48 -bottom-16 sm:static md:static sm:mt-4 md:mt-4">
-                <div className="w-28 h-28 relative">
+              <Link className="flex items-center justify-center gap-2 absolute left-40 -bottom-60 sm:static md:static sm:mt-4 md:mt-4" href={"https://wa.me/qr/QP3C4V2KWVXAP1" } target="_blank" rel="noopener noreferrer">
+                <div className="w-28 h-28 relative sm:-left-2">
                   <Image
                     src={"/Anive/Whastapp rosa.png"}
                     alt="Whatsapp"
@@ -207,11 +200,11 @@ export default function Details() {
                     objectFit="contain"
                   />
                 </div>
-                <p className="text-xm underline hover:bg-pink-200">
+                <p className="text-xm underline hover:bg-pink-200 sm:relative sm:right-10">
                   Confirmar presença
                 </p>
-              </span>
-              <span className="flex items-center justify-center gap-2 absolute -left-10 -bottom-10 sm:static md:static sm:mt-4 md:mt-4">
+              </Link>
+              <span className="flex items-center justify-center gap-2 absolute -left-2 -bottom-52 sm:static md:static sm:mt-4 md:mt-4">
                 <Dialog>
                   <DialogTrigger className="text-xm underline hover:bg-pink-200">
                   <div className="flex items-center justify-center gap-2">
@@ -258,6 +251,13 @@ export default function Details() {
                 </Dialog>
               </span>
             </div>
+            <div className="relative w-[300px] h-[300px]">
+                <Image
+                  src="/Anive/Gatoaniversariante.png"
+                  alt="gatocantor"
+                  fill
+                />
+              </div>
           </div>
         </section>
       </main>
