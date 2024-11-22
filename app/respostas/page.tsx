@@ -13,6 +13,7 @@ interface Message {
     message: string;
     name: string;
     picture: string;
+    createdAt: string;
 }
 
 export default function Respostas() {
@@ -46,13 +47,16 @@ export default function Respostas() {
     });
 
     const questions = [
-        "Qual musica te faz lembrar de mim e por quê?",
         "Qual foi o momento mais legal que vivemos juntas?",
-        "Se pudesse descrever nossa amizade em uma palavra qual seria?"
+        "Se pudesse descrever nossa amizade em uma palavra qual seria?",
+        "Qual musica te faz lembrar de mim e por quê?"
     ];
 
     const filteredMessages = messages?.messages?.filter((message: Message) => 
         message.question === selectedQuestion
+    )
+    .sort((a: Message, b: Message) => 
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
     ) || [];
 
     const containerVariants = {
@@ -105,6 +109,7 @@ export default function Respostas() {
                             </motion.button>
                         ))}
                     </div>
+                    
 
                     <motion.div 
                         variants={containerVariants}
@@ -133,9 +138,20 @@ export default function Respostas() {
                                         height={50}
                                         className="w-12 h-12 rounded-full object-cover border-2 border-pink-200"
                                     />
-                                    <h3 className="ml-3 font-semibold text-gray-800 border-b-2 border-pink-200">
-                                        {message.name}
-                                    </h3>
+                                    <div className="ml-3">
+                                        <h3 className="font-semibold text-gray-800 border-b-2 border-pink-200">
+                                            {message.name}
+                                        </h3>
+                                        <p className="text-xs text-gray-500">
+                                            Enviado em {new Date(message.createdAt).toLocaleDateString('pt-BR', {
+                                                day: '2-digit',
+                                                month: '2-digit',
+                                                year: 'numeric',
+                                                hour: '2-digit',
+                                                minute: '2-digit'
+                                            })}
+                                        </p>
+                                    </div>
                                 </motion.div>
                                 <motion.p 
                                     className="text-gray-600 leading-relaxed"

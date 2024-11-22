@@ -34,13 +34,13 @@ export default function Header() {
       <Link href="/">Inicio</Link>
         </li>
         <li className="hover:text-white">
-        <Link href="/detalhes">Informações Sobre a Festa</Link>
-        </li>
-        <li className="hover:text-white">
           <Link href="/mensagens">Caderno de Mensagens</Link>
         </li>
         <li className="hover:text-white">
           <Link href="/respostas">Respostas</Link>
+        </li>
+        <li className="hover:text-white">
+        <Link href="/detalhes">Informações Sobre a Festa</Link>
         </li>
       </ul>
 
@@ -51,13 +51,13 @@ export default function Header() {
               <Link href="/" onClick={() => setIsMenuOpen(false)}>Inicio</Link>
             </li>
             <li className="hover:text-white">
-              <Link href="/detalhes" onClick={() => setIsMenuOpen(false)}>Informações Sobre a Festa</Link>
-            </li>
-            <li className="hover:text-white">
               <Link href="/mensagens" onClick={() => setIsMenuOpen(false)}>Caderno de Mensagens</Link>
             </li>
             <li className="hover:text-white">
               <Link href="/respostas" onClick={() => setIsMenuOpen(false)}>Respostas</Link>
+            </li>
+            <li className="hover:text-white">
+              <Link href="/detalhes" onClick={() => setIsMenuOpen(false)}>Informações Sobre a Festa</Link>
             </li>
           </ul>
         </div>
