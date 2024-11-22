@@ -39,7 +39,8 @@ export default function QuestionForm({
                 question: titleQuestion,
                 message: answer,
                 name: userName,
-                picture: userPicture
+                picture: userPicture,
+                likes: 0
             })
         })
 

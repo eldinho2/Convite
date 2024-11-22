@@ -19,5 +19,6 @@ model Message {
   name      String
   picture   String
   message   String
+  likes     Int      @default(0)
   createdAt DateTime @default(now()) @db.Date
 }

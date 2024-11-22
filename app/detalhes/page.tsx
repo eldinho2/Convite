@@ -191,7 +191,7 @@ export default function Details() {
               ></video>
             </div>
             <div className="relative flex flex-col items-center justify-center gap-4">
-              <Link className="flex items-center justify-center gap-2 absolute left-40 -bottom-60 sm:static md:static sm:mt-4 md:mt-4" href={"https://wa.me/qr/QP3C4V2KWVXAP1" } target="_blank" rel="noopener noreferrer">
+              <Link className="flex items-center justify-center gap-2 absolute left-40 -bottom-60 sm:static md:static sm:mt-4 md:mt-4" href={"https://wa.link/e3wysf" } target="_blank" rel="noopener noreferrer">
                 <div className="w-28 h-28 relative sm:-left-2">
                   <Image
                     src={"/Anive/Whastapp rosa.png"}

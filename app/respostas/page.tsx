@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import Loading from "../components/Loading";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { FaHeart } from "react-icons/fa";
 
 interface Message {
     id: string | number;
@@ -14,18 +15,46 @@ interface Message {
     name: string;
     picture: string;
     createdAt: string;
+    likes: number;
 }
+
+const heartVariants = {
+    liked: {
+        scale: [1, 1.5, 1],
+        transition: {
+            duration: 0.4
+        }
+    },
+    unliked: {
+        scale: 1
+    }
+};
+
+const countVariants = {
+    changed: {
+        scale: [1, 1.2, 1],
+        transition: {
+            duration: 0.3
+        }
+    }
+};
 
 export default function Respostas() {
     const [selectedQuestion, setSelectedQuestion] = useState<string>(
         "Qual musica te faz lembrar de mim e por quê?"
     );
     const [isLoadingState, setIsLoadingState] = useState(true);
+    const [likedMessages, setLikedMessages] = useState<Set<string | number>>(new Set());
 
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsLoadingState(false);
         }, 900);
+
+        const savedLikes = localStorage.getItem('likedMessages');
+        if (savedLikes) {
+            setLikedMessages(new Set(JSON.parse(savedLikes)));
+        }
 
         return () => clearTimeout(timer);
     }, []);
@@ -40,6 +69,7 @@ export default function Respostas() {
     const {
         data: messages,
         error,
+        mutate
     } = useSWR("/api/messages", fetcher, {
         refreshInterval: 1000,
         revalidateOnFocus: true,
@@ -77,6 +107,44 @@ export default function Respostas() {
             transition: {
                 duration: 0.5
             }
+        }
+    };
+
+    const handleLike = async (messageId: string | number) => {
+        try {
+            const isLiked = likedMessages.has(messageId);
+            const endpoint = isLiked ? '/api/removelike' : '/api/like';
+            
+            const updatedMessages = messages.messages.map((msg: Message) => {
+                if (msg.id === messageId) {
+                    return {
+                        ...msg,
+                        likes: msg.likes + (isLiked ? -1 : 1)
+                    };
+                }
+                return msg;
+            });
+            
+            mutate({ messages: updatedMessages }, false);
+            
+            const newLikedMessages = new Set(likedMessages);
+            if (isLiked) {
+                newLikedMessages.delete(messageId);
+            } else {
+                newLikedMessages.add(messageId);
+            }
+            setLikedMessages(newLikedMessages);
+            localStorage.setItem('likedMessages', JSON.stringify(Array.from(newLikedMessages)));
+
+            await fetch(endpoint, {
+                method: 'POST',
+                body: JSON.stringify({ messageId })
+            });
+            
+            mutate();
+        } catch (error) {
+            console.error('Erro ao gerenciar like:', error);
+            mutate();
         }
     };
 
@@ -161,6 +229,38 @@ export default function Respostas() {
                                 >
                                     {message.message}
                                 </motion.p>
+                                <motion.div 
+                                    className="mt-4 flex items-center gap-2"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ delay: 0.4 }}
+                                >
+                                    <button
+                                        onClick={() => handleLike(message.id)}
+                                        className="flex items-center gap-1 transition-colors"
+                                    >
+                                        <motion.div
+                                            variants={heartVariants}
+                                            animate={likedMessages.has(message.id) ? "liked" : "unliked"}
+                                        >
+                                            <FaHeart 
+                                                className={`text-xl ${
+                                                    message.likes > 0 || likedMessages.has(message.id) 
+                                                        ? 'text-pink-500' 
+                                                        : 'text-gray-300'
+                                                }`} 
+                                            />
+                                        </motion.div>
+                                        <motion.span 
+                                            className="text-sm"
+                                            variants={countVariants}
+                                            animate="changed"
+                                            key={message.likes} // Isso força a animação a rodar quando o número muda
+                                        >
+                                            {message.likes}
+                                        </motion.span>
+                                    </button>
+                                </motion.div>
                             </motion.div>
                         ))}
                     </motion.div>
