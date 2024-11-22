@@ -30,7 +30,7 @@ export default function Mensagens() {
   })
 
   const avatarOptions = [
-    '/iconesdivas/Cachorrinhofof.jpg',
+    '/iconesdivas/cachorrinhofof.jpg',
     '/iconesdivas/chad.jpg',
     '/iconesdivas/chococatcute.jpg',
     '/iconesdivas/cinamonrollcute.jpg',
@@ -38,7 +38,7 @@ export default function Mensagens() {
     '/iconesdivas/gatinhafofa2.jpg',
     '/iconesdivas/gatodebriga.jpg',
     '/iconesdivas/gatodoijo.jpg',
-    '/iconesdivas/Gatogalante.jpg',
+    '/iconesdivas/gatogalante.jpg',
     '/iconesdivas/gatomorango.jpg',
     '/iconesdivas/gatopalhaço.jpg',
     '/iconesdivas/gatosafadinho.jpg',
@@ -98,6 +98,11 @@ export default function Mensagens() {
                       width={50} 
                       height={50} 
                       className="cursor-pointer hover:opacity-75 rounded-full aspect-square object-cover"
+                      priority
+                      quality={75}
+                      onError={(e) => {
+                        console.error(`Erro ao carregar imagem: ${picture}`);
+                      }}
                     />
                   </DialogTrigger>
                   <DialogContent className="sm:max-w-80">
