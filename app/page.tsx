@@ -1,8 +1,25 @@
+'use client'
+
+import { useEffect, useState } from "react";
 import CarouselAlbum from "./components/CarouselAlbum";
 import Header from "./components/Header";
 import Image from "next/image";
 import Link from "next/link";
+import Loading from "./components/Loading";
+
 export default function Home() {
+  const [isLoadingState, setIsLoadingState] = useState(true);
+
+  useEffect(() => {
+      const timer = setTimeout(() => {
+          setIsLoadingState(false);
+      }, 900);
+
+      return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoadingState) return <Loading />
+
   return (
     <div>
       <Header />

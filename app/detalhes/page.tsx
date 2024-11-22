@@ -1,3 +1,6 @@
+'use client'
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Header from "../components/Header";
 import {
@@ -9,9 +12,21 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import Link from "next/link"
-
+import Loading from "../components/Loading"
 
 export default function Details() {
+  const [isLoadingState, setIsLoadingState] = useState(true);
+
+  useEffect(() => {
+      const timer = setTimeout(() => {
+          setIsLoadingState(false);
+      }, 900);
+
+      return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoadingState) return <Loading />
+
   return (
     <div>
       <Header />

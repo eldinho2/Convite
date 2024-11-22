@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import { useEffect, useState } from "react";
 import Loading from "../components/Loading";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 interface Message {
     id: string | number;
@@ -38,7 +39,6 @@ export default function Respostas() {
     const {
         data: messages,
         error,
-        isLoading,
     } = useSWR("/api/messages", fetcher, {
         refreshInterval: 1000,
         revalidateOnFocus: true,
@@ -83,12 +83,12 @@ export default function Respostas() {
         <div className="min-h-screen bg-gradient-to-b from-pink-50 to-white">
             <Header />
             <main className="pt-20">
-                <section className="max-w-6xl mx-auto px-4">
+                <section className="max-w-6xl mx-auto px-4 py-16">
                     <h1 className="text-center text-7xl font-[family-name:var(--font-great-vibes)] text-pink-800 mb-12 
                         border-b-4 border-pink-300 pb-4 max-w-[600px] mx-auto">
                         Respostas
                     </h1>
-                    <div className="flex sm:flex-row sm:flex-col gap-2 mb-8 justify-center 
+                    <div className="flex sm:flex-col gap-2 mb-8 justify-center 
                         border-2 border-pink-200 rounded-xl p-4 max-w-[800px] mx-auto">
                         {questions.map((question, index) => (
                             <motion.button
@@ -126,9 +126,11 @@ export default function Respostas() {
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: 0.2 }}
                                 >
-                                    <img 
-                                        src={message.picture} 
+                                    <Image
+                                        src={message.picture}
                                         alt={message.name}
+                                        width={50}
+                                        height={50}
                                         className="w-12 h-12 rounded-full object-cover border-2 border-pink-200"
                                     />
                                     <h3 className="ml-3 font-semibold text-gray-800 border-b-2 border-pink-200">

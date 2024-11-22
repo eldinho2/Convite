@@ -1,7 +1,7 @@
 'use client'
 import Header from '../components/Header'
 import useSWR from 'swr'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import QuestionForm from '../components/QuestionForm'
 import Image from 'next/image'
 import {
@@ -12,22 +12,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-
-interface Mensagem {
-  id: number
-  question: string
-  name: string
-  picture: string
-  message: string
-  createdAt: string
-}
+import Loading from '../components/Loading'
 
 const fetcher = (url: string) => fetch(url).then(res => res.json())
 
 export default function Mensagens() {
-  const [question, setQuestion] = useState('')
   const [name, setName] = useState('')
-  const [message, setMessage] = useState('')
   const [dialogOpen, setDialogOpen] = useState(false)
   const [respostasCompletas, setRespostasCompletas] = useState({
     pergunta1: false,
@@ -35,7 +25,7 @@ export default function Mensagens() {
     pergunta3: false
   })
 
-  const { data, error, mutate } = useSWR('/api/messages', fetcher, {
+  const { data, error } = useSWR('/api/messages', fetcher, {
     refreshInterval: 1000
   })
 
@@ -71,6 +61,19 @@ export default function Mensagens() {
     
     return Object.values(novasRespostas).every(resposta => resposta === true)
   }
+
+  const [isLoadingState, setIsLoadingState] = useState(true);
+
+  useEffect(() => {
+      const timer = setTimeout(() => {
+          setIsLoadingState(false);
+      }, 900);
+
+      return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoadingState) return <Loading />
+
 
   if (error) return <div>Erro ao carregar messages</div>
   if (!data) return <div>Carregando...</div>
