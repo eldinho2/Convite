@@ -30,22 +30,22 @@ export default function Mensagens() {
   })
 
   const avatarOptions = [
-    '/iconesdivas/cachorrinhofof.jpg',
-    '/iconesdivas/chad.jpg',
-    '/iconesdivas/chococatcute.jpg',
-    '/iconesdivas/cinamonrollcute.jpg',
-    '/iconesdivas/gatinhafofa.jpg',
-    '/iconesdivas/gatinhafofa2.jpg',
-    '/iconesdivas/gatodebriga.jpg',
-    '/iconesdivas/gatodoijo.jpg',
-    '/iconesdivas/gatogalante.jpg',
-    '/iconesdivas/gatomorango.jpg',
-    '/iconesdivas/gatopalhaço.jpg',
-    '/iconesdivas/gatosafadinho.jpg',
-    '/iconesdivas/hamsterfofa.jpg',
-    '/iconesdivas/kittycyte.jpg',
-    '/iconesdivas/kuromicute.jpg',
-    '/iconesdivas/pupurimcute.jpg'
+    '/cachorrinhofof.jpg',
+    '/chad.jpg',
+    '/chococatcute.jpg',
+    '/cinamonrollcute.jpg',
+    '/gatinhafofa.jpg',
+    '/gatinhafofa2.jpg',
+    '/gatodebriga.jpg',
+    '/gatodoijo.jpg',
+    '/gatogalante.jpg',
+    '/gatomorango.jpg',
+    '/gatopalhaço.jpg',
+    '/gatosafadinho.jpg',
+    '/hamsterfofa.jpg',
+    '/kittycyte.jpg',
+    '/kuromicute.jpg',
+    '/pupurimcute.jpg'
   ]
 
   const getRandomAvatar = () => {
