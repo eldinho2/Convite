@@ -197,41 +197,46 @@ export default function Details() {
                 </p>
               </span>
               <span className="flex items-center justify-center gap-2 absolute -left-10 -bottom-10 sm:static md:static sm:mt-4 md:mt-4">
-                <div className="w-16 h-16 relative">
-                  <Image
-                    src={"/Anive/presente.webp"}
-                    alt="Presente"
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </div>
                 <Dialog>
-                  <DialogTrigger className="text-xm underline hover:bg-pink-200">Sugestões de presentes</DialogTrigger>
+                  <DialogTrigger className="text-xm underline hover:bg-pink-200">
+                  <div className="flex items-center justify-center gap-2">
+                    <div className="w-16 h-16 relative">
+                      <Image
+                        src={"/Anive/presente.webp"}
+                        alt="Presente"
+                        layout="fill"
+                        objectFit="contain"
+                      />
+                    </div>
+                    Sugestões de presentes
+                    </div>
+                  </DialogTrigger>
                   <DialogContent className="bg-pink-50 border-2 border-pink-300 rounded-2xl">
                     <DialogHeader>
                       <DialogTitle className="text-3xl text-pink-700 font-[family-name:var(--font-forum)] text-center">
                         Sugestões de presentes
                       </DialogTitle>
                       <DialogDescription className="text-pink-500 text-center font-[family-name:var(--font-forum)] text-lg">
-                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                        Amigas queridas, mais do que presentes, o mais especial é ter vocês comigo nesse momento! 🎉 Mas, caso queiram me mimar, preparei essa listinha com sugestões. 🌸 Prefiro não receber sapatos ou roupas (é difícil acertar o tamanho! 👟👗). Amo cheiros doces 🍭, bijuterias prateadas e maquiagens bem brilhosas 💄✨. Obrigada por fazerem parte desse dia especial e da minha vida!
                       </DialogDescription>
                     </DialogHeader>
                     <div className="flex flex-col items-center justify-center gap-4 mt-4">
-                      <Link 
-                        href="https://www.amazon.com.br/s?k=presente+para+anivers%C3%A1rio+de+1+ano&ref=nb_sb_noss_2" 
-                        target="_blank" 
+                      <Link
+                        href="https://www.amazon.com.br/hz/wishlist/ls/1XBAW4V6HLLO2?ref_=wl_share"
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="bg-pink-400 hover:bg-pink-500 text-white px-6 py-2 rounded-full transition-colors duration-200 font-[family-name:var(--font-forum)]"
                       >
+
                         Lista Amazon
                       </Link>
-                      <Link 
-                        href="https://www.amazon.com.br/s?k=presente+para+anivers%C3%A1rio+de+1+ano&ref=nb_sb_noss_2" 
-                        target="_blank" 
+                      <Link
+                        href="https://happygiftlist.com/pt/lista-de-desejos/gzdsqrzl"
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="bg-pink-400 hover:bg-pink-500 text-white px-6 py-2 rounded-full transition-colors duration-200 font-[family-name:var(--font-forum)]"
                       >
-                        Lista 2
+                        Lista Shopee
                       </Link>
                     </div>
                   </DialogContent>

@@ -5,6 +5,7 @@ import Image from 'next/image'
 
 export default function CarouselAlbum() {
   const [activeIndex, setActiveIndex] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
 
   const images = [
     '/Anive/chad.jpg',
@@ -14,16 +15,40 @@ export default function CarouselAlbum() {
   ]
 
   useEffect(() => {
+    if (isPaused) return;
+    
     const timer = setInterval(() => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % images.length)
     }, 4000)
 
     return () => clearInterval(timer)
-  }, [images.length])
+  }, [images.length, isPaused])
+
+  const handlePrevious = () => {
+    setIsPaused(true)
+    setActiveIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length)
+  }
+
+  const handleNext = () => {
+    setIsPaused(true)
+    setActiveIndex((prevIndex) => (prevIndex + 1) % images.length)
+  }
+
+  const handleMouseUp = () => {
+    setIsPaused(false)
+  }
 
   return (
     <div className="relative w-full max-w-4xl mx-auto p-4">
       <div className="flex">
+        <button
+          onClick={handlePrevious}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 text-white p-2 rounded-full hover:bg-black/70"
+        >
+          ←
+        </button>
         <div className="w-1/3 space-y-2 pr-2">
           {images.map((src, index) => (
             index !== activeIndex && (
@@ -47,9 +72,18 @@ export default function CarouselAlbum() {
             className="object-cover rounded-md"
           />
         </div>
+        <button
+          onClick={handleNext}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 text-white p-2 rounded-full hover:bg-black/70"
+        >
+          →
+        </button>
       </div>
       <div className="absolute -top-12 right-3 rotate-12">
         <Image
+          className="sm:hidden"
           src="/Anive/cherrie.webp"
           alt="Cherries"
           width={150}
@@ -58,6 +92,7 @@ export default function CarouselAlbum() {
       </div>
       <div className="absolute bottom-1 -left-20 -rotate-12">
         <Image
+          className="sm:hidden"
           src="/Anive/gatinhoLaco.webp"
           alt="Kitten"
           width={150}

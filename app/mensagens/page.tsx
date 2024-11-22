@@ -39,8 +39,6 @@ export default function Mensagens() {
     refreshInterval: 1000
   })
 
-  console.log(data) 
-
   const avatarOptions = [
     '/iconesdivas/Cachorrinhofof.jpg',
     '/iconesdivas/chad.jpg',
@@ -80,91 +78,93 @@ export default function Mensagens() {
   return (
     <div>
       <Header />
-      <main className="pt-16 max-w-2xl mx-auto p-4">
+      <main className="pt-20 max-w-2xl mx-auto p-4">
         <div className='flex flex-col justify-center items-center'>
-          <h1 className="text-2xl font-bold mb-6">Caderno de messages</h1>
-          <div className='flex flex-col gap-2'>
-          <h2 className='text-sm text-gray-500'>Escolha seu Nome e foto</h2>
-          <div className='flex flex-col gap-4'>
-            <div className='flex items-center gap-2'>
-              <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-                <DialogTrigger>
-                  <Image 
-                    src={picture} 
-                    alt="Avatar" 
-                    width={50} 
-                    height={50} 
-                    className="cursor-pointer rounded-full hover:opacity-75"
-                  />
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-md">
-                  <DialogHeader>
-                    <DialogTitle>Escolha seu avatar</DialogTitle>
-                    <DialogDescription>
-                      Selecione uma das imagens abaixo para usar como seu avatar
-                    </DialogDescription>
-                  </DialogHeader>
-                  <div className="grid grid-cols-5 gap-2 p-4">
-                    {avatarOptions.map((avatar, index) => (
-                      <Image
-                        key={index}
-                        src={avatar}
-                        alt={`Avatar ${index + 1}`}
-                        width={50}
-                        height={50}
-                        className="cursor-pointer hover:opacity-75 rounded-full"
-                        onClick={() => {
-                          setPicture(avatar)
-                          setDialogOpen(false)
-                        }}
-                      />
-                    ))}
-                  </div>
-                </DialogContent>
-              </Dialog>
-              <input 
-                type="text" 
-                placeholder="Nome" 
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="border rounded-md p-2"
-              />
+          <h1 className="text-center text-7xl sm:text-5xl font-[family-name:var(--font-great-vibes)] text-pink-800 mb-8 sm:mb-12">
+            Caderno de Mensagens
+          </h1>
+          <div className='flex flex-col gap-2 w-full'>
+            <h2 className='text-base sm:text-lg text-gray-500 font-bold'>Escolha seu Nome e foto</h2>
+            <div className='flex flex-col gap-4 w-full'>
+              <div className='flex items-center gap-2'>
+                <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+                  <DialogTrigger>
+                    <Image 
+                      src={picture} 
+                      alt="Avatar" 
+                      width={50} 
+                      height={50} 
+                      className="cursor-pointer hover:opacity-75 rounded-full aspect-square object-cover"
+                    />
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-80">
+                    <DialogHeader>
+                      <DialogTitle>Escolha seu avatar</DialogTitle>
+                      <DialogDescription>
+                        Selecione uma das imagens abaixo para usar como seu avatar
+                      </DialogDescription>
+                    </DialogHeader>
+                    <div className="grid grid-cols-5 gap-2 p-4 sm:p-2">
+                      {avatarOptions.map((avatar, index) => (
+                        <Image
+                          key={index}
+                          src={avatar}
+                          alt={`Avatar ${index + 1}`}
+                          width={50}
+                          height={50}
+                          className="cursor-pointer hover:opacity-75 rounded-full aspect-square object-cover sm:w-12 sm:h-12"
+                          onClick={() => {
+                            setPicture(avatar)
+                            setDialogOpen(false)
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </DialogContent>
+                </Dialog>
+                <input 
+                  type="text" 
+                  placeholder="Nome" 
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="border border-pink-400 rounded-md p-2 w-full"
+                />
+              </div>
             </div>
           </div>
-        </div>
-        <div className='flex flex-col gap-8'>
-          <QuestionForm 
-            iconQuestion="/Anive/gatocoracao.webp" 
-            userPicture={picture} 
-            userName={name} 
-            iconQuestionClassName='transform scale-150' 
-            iconWidth={80} 
-            iconHeight={80} 
-            titleQuestion="Qual foi o momento mais legal que vivemos juntas?"
-            identificador="pergunta1"
-            verificarRespostas={verificarRespostas}
-          />
-          <QuestionForm 
-            iconQuestion="/Anive/Gatosamigosss.png" 
-            userPicture={picture} 
-            userName={name} 
-            iconWidth={80} 
-            iconHeight={80} 
-            titleQuestion="Se pudesse descrever nossa amizade em uma palavra qual seria?"
-            identificador="pergunta2"
-            verificarRespostas={verificarRespostas}
-          />
-          <QuestionForm 
-            iconQuestion="/Anive/gatoguitarra.webp" 
-            userPicture={picture} 
-            userName={name} 
-            iconWidth={80} 
-            iconHeight={80} 
-            titleQuestion="Qual musica te faz lembrar de mim e por quê?"
-            identificador="pergunta3"
-            verificarRespostas={verificarRespostas}
-          />
-        </div>
+          <div className='flex flex-col gap-4 sm:gap-8 w-full'>
+            <QuestionForm 
+              iconQuestion="/Anive/gatocoracao.webp" 
+              userPicture={picture} 
+              userName={name} 
+              iconQuestionClassName='transform scale-125 sm:scale-150' 
+              iconWidth={60} 
+              iconHeight={60} 
+              titleQuestion="Qual foi o momento mais legal que vivemos juntas?"
+              identificador="pergunta1"
+              verificarRespostas={verificarRespostas}
+            />
+            <QuestionForm 
+              iconQuestion="/Anive/Gatosamigosss.png" 
+              userPicture={picture} 
+              userName={name} 
+              iconWidth={80} 
+              iconHeight={80} 
+              titleQuestion="Se pudesse descrever nossa amizade em uma palavra qual seria?"
+              identificador="pergunta2"
+              verificarRespostas={verificarRespostas}
+            />
+            <QuestionForm 
+              iconQuestion="/Anive/gatoguitarra.webp" 
+              userPicture={picture} 
+              userName={name} 
+              iconWidth={80} 
+              iconHeight={80} 
+              titleQuestion="Qual musica te faz lembrar de mim e por quê?"
+              identificador="pergunta3"
+              verificarRespostas={verificarRespostas}
+            />
+          </div>
         </div>
       </main>
     </div>

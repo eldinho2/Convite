@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { useState, FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
+import { mutate } from 'swr'
 
 interface QuestionFormProps {
     titleQuestion: string
@@ -31,36 +32,43 @@ export default function QuestionForm({
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
+
+        fetch('/api/messages', {
+            method: 'POST',
+            body: JSON.stringify({
+                question: titleQuestion,
+                message: answer,
+                name: userName,
+                picture: userPicture
+            })
+        })
+
+        mutate('/api/messages')
         
         if (answer.trim() !== '') {
             setIsAnswered(true)
-            console.log({
-                question: titleQuestion,
-                answer: answer,
-                status: 'respondida'
-            })
-
             const todasPerguntasRespondidas = verificarRespostas(identificador)
             
             if (todasPerguntasRespondidas) {
                 router.push('/respostas')
             }
+            
         }
     }
 
     return (
-        <div className={`flex flex-col gap-4 p-6 rounded-lg transition-all ${
+        <div className={`flex flex-col gap-4 p-6 sm:p-4 rounded-lg transition-all ${
             isAnswered ? 'bg-green-50 border-2 border-green-200' : ''
         }`}>
-            <div className='flex items-center gap-4 relative'>
+            <div className='flex items-center gap-4 sm:gap-2 relative'>
                 <Image 
-                    className={iconQuestionClassName} 
+                    className={`${iconQuestionClassName} rounded-full aspect-square object-cover`} 
                     src={iconQuestion} 
                     alt="Avatar" 
                     width={iconWidth} 
                     height={iconHeight} 
                 />
-                <h1 className='text-2xl font-bold'>{titleQuestion}</h1>
+                <h1 className='text-2xl sm:text-lg font-bold'>{titleQuestion}</h1>
                 {isAnswered && (
                     <div className="absolute right-0 flex items-center text-green-600 gap-2">
                         <svg 
@@ -82,20 +90,20 @@ export default function QuestionForm({
                 )}
             </div>        
             <form className="flex flex-col" onSubmit={handleSubmit}>
-                <div className="flex items-start gap-8"> 
+                <div className="flex items-start gap-8 sm:gap-4"> 
                     <div className='flex flex-col items-center'>
                         <Image 
-                            className='rounded-full' 
+                            className='rounded-full aspect-square object-cover' 
                             src={userPicture} 
                             alt="Avatar" 
                             width={50} 
                             height={50} 
                         />
-                        <h1 className='text-lg text-center break-words max-w-[90px] mt-2'>
+                        <h1 className='text-lg sm:text-base text-center break-words max-w-[90px] mt-2 sm:mt-1'>
                             {userName}
                         </h1>
                     </div>
-                    <div className="bubble grow left h-32 relative">
+                    <div className="bubble grow left h-32 sm:h-24 relative">
                         <textarea 
                             placeholder="Responda aqui..." 
                             className="w-full h-full bg-transparent outline-none resize-none p-2"
@@ -113,7 +121,7 @@ export default function QuestionForm({
                                 ? 'bg-green-500 cursor-not-allowed' 
                                 : 'bg-pink-400 hover:bg-pink-500'
                         } text-white`}
-                        disabled={isAnswered}
+                        disabled={!userName || isAnswered}
                     >
                         {isAnswered ? 'Enviado' : 'Enviar'}
                     </button>

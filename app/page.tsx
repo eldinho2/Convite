@@ -8,7 +8,7 @@ export default function Home() {
       <Header />
       <main className="pt-16">
         <section>
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center sm:flex-col">
             <h1 className="text-7xl max-w-96 font-[family-name:var(--font-great-vibes)] sm:text-4xl sm:px-4 sm:pt-4 md:text-5xl md:px-4 md:pt-4">
               Bem-vindas ao meu aniversário!
             </h1>
@@ -52,8 +52,8 @@ export default function Home() {
         <section>
           <CarouselAlbum />
         </section>
-        <section className="flex flex-col sm:flex-row items-center justify-between py-16 font-[family-name:var(--font-forum)] sm:py-4 md:py-4">
-          <div className="flex flex-col items-center text-center text-2xl gap-4 max-w-[700px] sm:max-w-[60%]">
+        <section className="flex flex-col items-center justify-between py-16 font-[family-name:var(--font-forum)] sm:py-4 md:py-4">
+          <div className="flex flex-col items-center text-center text-2xl gap-4 max-w-[700px] sm:max-w-[80%]">
             <h1 className="text-7xl font-[family-name:var(--font-great-vibes)]">
               Caderno de mensagens
             </h1>
@@ -67,8 +67,7 @@ export default function Home() {
               marcantes que vivemos juntas. Cada mensagem vai ser uma forma
               única de guardar o carinho de cada uma de vocês!
             </h3>
-          </div>
-          <Link className="flex flex-col items-center cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out" href="/mensagens">
+            <Link className="flex flex-col items-center cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out" href="/mensagens">
             <div className="flex flex-col items-center" >
               <Image
                 src="/Anive/setafofarosa.png"
@@ -76,9 +75,10 @@ export default function Home() {
                 width={100}
                 height={100}
               />
-              <span className="text-xl font-bold text-center max-w-[200px]">Ir para o caderno de mensagens</span>
+              <span className="text-xl font-bold text-center max-w-[200px] mt-2">Ir para o caderno de mensagens</span>
             </div>
           </Link>
+          </div>
         </section>
       </main>
     </div>

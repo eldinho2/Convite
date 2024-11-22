@@ -10,19 +10,51 @@ const config: Config = {
   theme: {
   	screens: {
   		sm: {
+			min: '100px',
   			max: '400px'
   		},
   		md: {
-  			max: '480px',
-  			min: '400px'
+			min: '401px',
+  			max: '480px'
   		},
   		lg: {
+			min: '481px',
   			max: '1024px'
   		},
-  		xl: '1280px',
-  		'2xl': '1536px'
+  		xl: {
+			min: '1025px',
+  			max: '1280px'
+  		},
+  		'2xl': {
+			min: '1281px',
+  			max: '1536px'
+		}
   	},
   	extend: {
+		keyframes: {
+			loading: {
+			  '0%': { width: '0%' },
+			  '5%': { width: '5%' },
+			  '10%': { width: '10%' },
+			  '15%': { width: '15%' },
+			  '20%': { width: '20%' },
+			  '25%': { width: '25%' },
+			  '30%': { width: '30%' },
+			  '35%': { width: '35%' },
+			  '40%': { width: '40%' },
+			  '45%': { width: '45%' },
+			  '50%': { width: '50%' },
+			  '55%': { width: '55%' },
+			  '60%': { width: '60%' },
+			  '75%': { width: '75%' },
+			  '80%': { width: '80%' },
+			  '90%': { width: '90%' },
+			  '100%': { width: '100%' }
+			}
+		  },
+		  animation: {
+			loading: 'loading 1900ms ease-in-out'
+		  },
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
