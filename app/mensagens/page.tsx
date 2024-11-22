@@ -30,7 +30,7 @@ export default function Mensagens() {
   })
 
   const avatarOptions = [
-    '/cachorrinhofof.jpg',
+    '/Cachorrinhofof.jpg',
     '/chad.jpg',
     '/chococatcute.jpg',
     '/cinamonrollcute.jpg',
@@ -38,7 +38,7 @@ export default function Mensagens() {
     '/gatinhafofa2.jpg',
     '/gatodebriga.jpg',
     '/gatodoijo.jpg',
-    '/gatogalante.jpg',
+    '/Gatogalante.jpg',
     '/gatomorango.jpg',
     '/gatopalhaço.jpg',
     '/gatosafadinho.jpg',
