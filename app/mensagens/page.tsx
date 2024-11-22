@@ -100,7 +100,7 @@ export default function Mensagens() {
                       className="cursor-pointer hover:opacity-75 rounded-full aspect-square object-cover"
                       priority
                       quality={75}
-                      onError={(e) => {
+                      onError={() => {
                         console.error(`Erro ao carregar imagem: ${picture}`);
                       }}
                     />
